@@ -61,10 +61,8 @@ const LandingPage = () => {
         {faq.map((faq, index) => {
           return (
             <AccordionItem key={index} value={`item-${index + 1}`}>
-              <AccordionTrigger>Is it accessible?</AccordionTrigger>
-              <AccordionContent>
-                Yes. It adheres to the WAI-ARIA design pattern.
-              </AccordionContent>
+              <AccordionTrigger>{faq.question}</AccordionTrigger>
+              <AccordionContent>{faq.answer}</AccordionContent>
             </AccordionItem>
           );
         })}
