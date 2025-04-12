@@ -31,6 +31,8 @@ const LandingPage = () => {
           })}          
         </CarouselContent>
       </Carousel>
+
+      <img src='/banner.png' className="w-full" />
     </main>
   )
 }
