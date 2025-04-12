@@ -7,6 +7,12 @@ import { PenBox } from 'lucide-react'
 const Header = () => {
     const [showSignIn, setShowSignIn] = useState(false);
 
+    const handleOverlayClick = (e) => {
+        if (e.target === e.currentTarget) {
+            setShowSignIn(false);
+        }
+    }
+
     return (
         <>
             <nav className="py-4 flex justify-between items-center">
@@ -26,7 +32,7 @@ const Header = () => {
                 </div>
             </nav>
 
-            {showSignIn && <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            {showSignIn && <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50" onClick={handleOverlayClick}>
                     <SignIn 
                         signUpForceRedirectUrl="/onboarding"
                         fallbackRedirectUrl="/onboarding"
