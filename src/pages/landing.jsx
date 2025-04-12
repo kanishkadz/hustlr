@@ -17,6 +17,8 @@ const LandingPage = () => {
           <Button variant="destructive" size="xl">Post a Job</Button>
         </Link>
       </div>
+
+      
     </main>
   )
 }
