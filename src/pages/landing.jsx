@@ -3,8 +3,10 @@ import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carouse
 import React from 'react'
 import { Link } from 'react-router-dom'
 import companies from "../data/companies.json"
+import faq from "../data/faq.json"
 import Autoplay from 'embla-carousel-autoplay'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 
 const LandingPage = () => {
   return (
@@ -55,7 +57,15 @@ const LandingPage = () => {
         </Card>
       </section>
 
-      
+      <Accordion type="single" collapsible>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
     </main>
   )
 }
