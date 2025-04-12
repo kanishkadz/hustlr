@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import AppLayout from "./layout/app-layout"
 import LandingPage from "./pages/landing"
+import Onboarding from "./pages/onboarding"
 
 const router = createBrowserRouter([
   {
