@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Button } from './ui/button'
 import { SignedIn, SignedOut, SignIn, SignInButton, UserButton } from '@clerk/clerk-react'
-import { BriefcaseBusinessIcon, PenBox } from 'lucide-react'
+import { BriefcaseBusinessIcon, Heart, PenBox } from 'lucide-react'
 
 const Header = () => {
     const [showSignIn, setShowSignIn] = useState(false);
@@ -46,6 +46,11 @@ const Header = () => {
                                     label="My Jobs"
                                     labelIcon={<BriefcaseBusinessIcon size={15} />}
                                     href="/my-jobs" 
+                                />
+                                <UserButton.Link
+                                    label="Saved Jobs"
+                                    labelIcon={<Heart size={15} />}
+                                    href="/saved-jobs" 
                                 />
                             </UserButton.MenuItems>
                         </UserButton>
