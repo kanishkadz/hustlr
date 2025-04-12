@@ -1,4 +1,6 @@
+import { Button } from '@/components/ui/button'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const LandingPage = () => {
   return (
@@ -8,7 +10,12 @@ const LandingPage = () => {
         <p className="text-gray-300 sm:mt-4 text-xs sm:text-xl">Explore thousands of job listings or find the perfect candidate.</p>
       </section>
       <div>
-
+        <Link to='/jobs'>
+          <Button>Find Jobs</Button>
+        </Link>
+        <Link to='/post-job'>
+          <Button>Post a Job</Button>
+        </Link>
       </div>
     </main>
   )
