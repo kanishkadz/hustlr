@@ -4,7 +4,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import companies from "../data/companies.json"
 import Autoplay from 'embla-carousel-autoplay'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 const LandingPage = () => {
   return (
@@ -39,7 +39,6 @@ const LandingPage = () => {
         <Card>
           <CardHeader>
             <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
           </CardHeader>
           <CardContent>
             <p>Card Content</p>
