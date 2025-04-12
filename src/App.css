@@ -1,5 +1,5 @@
 .grid-background{
-    background: fixed;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -14,7 +14,7 @@
     z-index: -1;
 }
 
-grid-background::before{
+.grid-background::before{
     content: "";
     position: absolute;
     top: 0;
