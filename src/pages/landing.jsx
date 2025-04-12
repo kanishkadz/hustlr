@@ -24,7 +24,9 @@ const LandingPage = () => {
       <Carousel className="w-full py-10" >
         <CarouselContent>
           {companies.map(({name, id, path}) => {
-            return <CarouselItem key={id}> <img src={path} alt={name} className="h-9 sm:h-14 object-contain" /> </CarouselItem>
+            return <CarouselItem key={id} className="basis-1/3 lg:basis-1/6"> 
+                  <img src={path} alt={name} className="h-9 sm:h-14 object-contain" /> 
+            </CarouselItem>
           })}          
         </CarouselContent>
       </Carousel>
