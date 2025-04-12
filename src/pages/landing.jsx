@@ -38,19 +38,19 @@ const LandingPage = () => {
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card>
           <CardHeader>
-            <CardTitle>Card Title</CardTitle>
+            <CardTitle>For Job Seekers</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Card Content</p>
+            Search & apply for jobs, track applications and more.
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle>Card Title</CardTitle>
+            <CardTitle>For Employers</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Card Content</p>
+            Post jobs, manage applications and find the best candidates.
           </CardContent>
         </Card>
       </section>
