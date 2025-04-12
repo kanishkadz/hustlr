@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { Button } from './ui/button'
 import { SignedIn, SignedOut, SignIn, SignInButton, UserButton } from '@clerk/clerk-react'
 import { PenBox } from 'lucide-react'
@@ -7,9 +7,18 @@ import { PenBox } from 'lucide-react'
 const Header = () => {
     const [showSignIn, setShowSignIn] = useState(false);
 
+    const [search, setSearch] = useSearchParams();
+
+    useEffect(() => {
+        if(search.get('sign-in')){
+            setShowSignIn(true)
+        }
+    }, [search]);
+
     const handleOverlayClick = (e) => {
         if (e.target === e.currentTarget) {
             setShowSignIn(false);
+            setSearch({});
         }
     }
 
