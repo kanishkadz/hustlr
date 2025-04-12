@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from './ui/button'
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react'
+import { PenBox } from 'lucide-react'
 
 const Header = () => {
     return (
@@ -16,7 +17,7 @@ const Header = () => {
                     </SignedOut>
                     <SignedIn>
                         <Link to='/post-job'>
-                            <Button variant='destructive' className="rounded-full">Post a Job</Button>
+                            <Button variant='destructive' className="rounded-full"><PenBox /> Post a Job</Button>
                         </Link>
                         <UserButton />
                     </SignedIn>
