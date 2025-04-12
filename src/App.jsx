@@ -1,9 +1,16 @@
-import { Button } from "./components/ui/button"
+import { createBrowserRouter } from "react-router-dom"
+import AppLayout from "./layout/app-layout"
+
+const router = createBrowserRouter([
+  {
+    element: <AppLayout />
+  }
+])
 
 function App() {
   return (
     <>
-      <h1><Button> Login</Button></h1>
+      
     </>
   )
 }
