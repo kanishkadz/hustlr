@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom"
 import AppLayout from "./layout/app-layout"
+import LandingPage from "./pages/landing"
 
 const router = createBrowserRouter([
   {
