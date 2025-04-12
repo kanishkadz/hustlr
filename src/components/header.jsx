@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from './ui/button'
-import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react'
+import { SignedIn, SignedOut, SignIn, SignInButton, UserButton } from '@clerk/clerk-react'
 import { PenBox } from 'lucide-react'
 
 const Header = () => {
+    const [showSignIn, setShowSignIn] = useState(false);
+
     return (
         <>
             <nav className="py-4 flex justify-between items-center">
@@ -13,7 +15,7 @@ const Header = () => {
                 </Link>
                 <div className="flex gap-8">
                     <SignedOut>
-                        <Button variant="outline">Login</Button>
+                        <Button variant="outline" onClick={() => setShowSignIn(true)}>Login</Button>
                     </SignedOut>
                     <SignedIn>
                         <Link to='/post-job'>
@@ -23,6 +25,13 @@ const Header = () => {
                     </SignedIn>
                 </div>
             </nav>
+
+            {showSignIn && <div>
+                    <SignIn 
+                        signUpForceRedirectUrl="/onboarding"
+                        fallbackRedirectUrl="/onboarding"
+                    />
+                </div>}
         </>
     )
 }
