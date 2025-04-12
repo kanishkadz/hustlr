@@ -3,7 +3,13 @@ import AppLayout from "./layout/app-layout"
 
 const router = createBrowserRouter([
   {
-    element: <AppLayout />
+    element: <AppLayout />,
+    children: [
+      {
+        path: '/',
+        element: <LandingPage />
+      }
+    ]
   }
 ])
 
