@@ -2,7 +2,14 @@ import React from 'react'
 
 const LandingPage = () => {
   return (
-    <div>LandingPage</div>
+    <main>
+      <section>
+        <h1>Find Your Dream Job <span>and get HIRED</span></h1>
+      </section>
+      <div>
+
+      </div>
+    </main>
   )
 }
 
