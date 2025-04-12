@@ -22,7 +22,7 @@ const LandingPage = () => {
         </Link>
       </div>
 
-      <Carousel plugins={[Autoplay({delay: 2000, stopOnInteraction: true})]} className="w-full py-10" >
+      <Carousel plugins={[Autoplay({delay: 2000})]} className="w-full py-10" >
         <CarouselContent className="flex gap-5 sm:gap-20 items-center">
           {companies.map(({name, id, path}) => {
             return <CarouselItem key={id} className="basis-1/3 lg:basis-1/6"> 
