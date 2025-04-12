@@ -11,7 +11,7 @@ const LandingPage = () => {
       </section>
       <div>
         <Link to='/jobs'>
-          <Button variant="blue">Find Jobs</Button>
+          <Button variant="blue" size="xl">Find Jobs</Button>
         </Link>
         <Link to='/post-job'>
           <Button>Post a Job</Button>
