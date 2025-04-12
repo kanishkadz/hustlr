@@ -15,6 +15,9 @@ const Header = () => {
                         <Button variant="outline">Login</Button>
                     </SignedOut>
                     <SignedIn>
+                        <Link to='/post-job'>
+                            <Button variant='destructive' className="rounded-full">Post a Job</Button>
+                        </Link>
                         <UserButton />
                     </SignedIn>
                 </div>
