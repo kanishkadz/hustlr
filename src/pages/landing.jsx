@@ -1,7 +1,8 @@
 import { Button } from '@/components/ui/button'
-import { CarouselContent, CarouselItem} from '@/components/ui/carousel'
+import { Carousel, CarouselContent, CarouselItem} from '@/components/ui/carousel'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import companies from "../data/companies.json"
 
 const LandingPage = () => {
   return (
@@ -22,7 +23,9 @@ const LandingPage = () => {
 
       <Carousel className="w-full py-10" >
         <CarouselContent>
-          
+          {companies.map(({name, id, path}) => {
+            return <CarouselItem key={id}> <img src={path} alt={name} /> </CarouselItem>
+          })}          
         </CarouselContent>
       </Carousel>
     </main>
