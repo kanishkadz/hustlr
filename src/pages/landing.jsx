@@ -54,6 +54,8 @@ const LandingPage = () => {
           </CardContent>
         </Card>
       </section>
+
+      
     </main>
   )
 }
