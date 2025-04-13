@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Button } from './ui/button'
-import { SignedIn, SignedOut, SignIn, SignInButton, UserButton } from '@clerk/clerk-react'
+import { SignedIn, SignedOut, SignIn, SignInButton, UserButton, useUser } from '@clerk/clerk-react'
 import { BriefcaseBusinessIcon, Heart, PenBox } from 'lucide-react'
 
 const Header = () => {
@@ -9,8 +9,10 @@ const Header = () => {
 
     const [search, setSearch] = useSearchParams();
 
+    const { user } = useUser();
+
     useEffect(() => {
-        if(search.get('sign-in')){
+        if (search.get('sign-in')) {
             setShowSignIn(true)
         }
     }, [search]);
@@ -33,24 +35,26 @@ const Header = () => {
                         <Button variant="outline" onClick={() => setShowSignIn(true)}>Login</Button>
                     </SignedOut>
                     <SignedIn>
-                        <Link to='/post-job'>
-                            <Button variant='destructive' className="rounded-full"><PenBox size={20} className="mr-2" /> Post a Job</Button>
-                        </Link>
+                        {user?.unsafeMetadata?.role === 'recruiter'(
+                            <Link to='/post-job'>
+                                <Button variant='destructive' className="rounded-full"><PenBox size={20} className="mr-2" /> Post a Job</Button>
+                            </Link>
+                        )}
                         <UserButton appearance={{
-                            elements:{
-                                avatarBox:"w-10 h-10",
+                            elements: {
+                                avatarBox: "w-10 h-10",
                             }
                         }}>
                             <UserButton.MenuItems>
                                 <UserButton.Link
                                     label="My Jobs"
                                     labelIcon={<BriefcaseBusinessIcon size={15} />}
-                                    href="/my-jobs" 
+                                    href="/my-jobs"
                                 />
                                 <UserButton.Link
                                     label="Saved Jobs"
                                     labelIcon={<Heart size={15} />}
-                                    href="/saved-jobs" 
+                                    href="/saved-jobs"
                                 />
                             </UserButton.MenuItems>
                         </UserButton>
@@ -59,11 +63,11 @@ const Header = () => {
             </nav>
 
             {showSignIn && <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 " onClick={handleOverlayClick}>
-                    <SignIn 
-                        signUpForceRedirectUrl="/onboarding"
-                        fallbackRedirectUrl="/onboarding"
-                    />
-                </div>}
+                <SignIn
+                    signUpForceRedirectUrl="/onboarding"
+                    fallbackRedirectUrl="/onboarding"
+                />
+            </div>}
         </>
     )
 }
