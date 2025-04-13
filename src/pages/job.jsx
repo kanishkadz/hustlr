@@ -3,6 +3,7 @@ import useFetch from '@/hooks/use-fetch';
 import { useUser } from '@clerk/clerk-react'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
+import { BarLoader } from 'react-spinners';
 
 const JobPage = () => {
   const {isLoaded, user} = useUser();
@@ -19,6 +20,10 @@ const JobPage = () => {
   useEffect(() => {
     if(isLoaded) fnJob();
   }, [isLoaded]);
+
+  if(!isLoaded || loadingJob){
+    return <BarLoader className='mb-4' width={"100%"} color='#36d7b7' />;
+  }
 
   return (
     <div>JobPage</div>

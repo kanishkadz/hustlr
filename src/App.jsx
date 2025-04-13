@@ -11,6 +11,7 @@ import SavedJobs from "./pages/saved-job"
 import MyJobs from "./pages/my-jobs"
 import ProtectedRoute from "./components/protected-route";
 
+
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
       {
         path: '/my-jobs',
         element: (
-          <ProtectedRoute> <MyJobs /> </ProtectedRoute>
+          <ProtectedRoute> <JobPage /> </ProtectedRoute>
         )
       }
     ]
