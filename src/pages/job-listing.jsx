@@ -1,19 +1,9 @@
 import { getJobs } from '@/api/apiJobs'
-import { useSession } from '@clerk/clerk-react'
-import React, { useEffect } from 'react'
+import useFetch from '@/hooks/use-fetch'
+import React from 'react'
 
 const JobListing = () => {
-  
-  const fetchJobs = async () => {
-    
-    const data = await getJobs(supabaseAccessToken);
-  };
-
-  useEffect(() => {
-    fetchJobs();
-
-    getJobs();
-  }, []);
+  const {fn: fnJobs, data:dataJobs, loading:loadingJobs} = useFetch(getJobs, {});
 
   return (
     <div>
