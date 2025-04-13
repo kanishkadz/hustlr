@@ -26,6 +26,10 @@ const JobPage = () => {
     job_id: id,
   });
 
+  const handleStatusChange = (value) => {
+    const isOpen = value === "open"
+  }
+
   useEffect(() => {
     if(isLoaded) fnJob();
   }, [isLoaded]);
