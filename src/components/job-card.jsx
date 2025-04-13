@@ -19,15 +19,15 @@ const JobCard = ({
                 {isMyJob && <Trash2Icon fill="red" size={18} className="text-red-300 cursor-pointer" />}
             </CardTitle>
         </CardHeader>
-        <CardContent>
-            <div>
+        <CardContent className="flex flex-col gap-4 flex-1">
+            <div className="flex justify-between">
                 {job.company && <img src={job.company.logo_url} className="h-6" />}
                 <div>
                     <MapPinIcon size={15} /> {job.location}
                 </div>
             </div>
             <hr />
-            {job.description}
+            {job.description.substring(0, job.description.indexOf("."))}
         </CardContent>
     </Card>
   )
