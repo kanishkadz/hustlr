@@ -25,7 +25,12 @@ const JobListing = () => {
     if (isLoaded) fnJobs();
   }, [isLoaded, location, company_id, searchQuery]);
 
-  const handleSearch = () => {}
+  const handleSearch = (e) => {
+    e.preventDefault();
+    let formData = new FormData(e.target);
+
+    const query = formData.get("search-query");
+  }
 
   if(!isLoaded){
     return <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />
