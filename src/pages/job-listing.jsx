@@ -1,3 +1,4 @@
+import { getCompanies } from '@/api/apiCompanies'
 import { getJobs } from '@/api/apiJobs'
 import JobCard from '@/components/job-card'
 import useFetch from '@/hooks/use-fetch'
@@ -12,8 +13,11 @@ const JobListing = () => {
   const {isLoaded} = useUser()
   
   const {fn: fnJobs, data:jobs, loading:loadingJobs} = useFetch(getJobs, {location, company_id, searchQuery});
+  const {fn: fnCompanies, data:companies} = useFetch(getCompanies);
 
-  console.log(jobs);
+  useEffect(() => {
+    if (isLoaded) fnCompanies();
+  }, [isLoaded]);
 
   useEffect(() => {
     if (isLoaded) fnJobs();
