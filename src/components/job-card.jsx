@@ -21,6 +21,7 @@ const JobCard = ({
             user_id: user.id,
             job_id: job.id,
         });
+        onJobSaved();
     };
     
   return (
