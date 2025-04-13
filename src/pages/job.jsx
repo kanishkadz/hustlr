@@ -45,6 +45,9 @@ const JobPage = () => {
           {job?.isOpen?<><DoorOpen/>Open</> : <><DoorClosed/>Closed</>}
         </div>
       </div>
+
+      <h2 className="text-2xl sm:text-3xl font-bold">About the Job</h2>
+      <p className="sm:text-lg">{job?.description}</p>
     </div>
   )
 }
