@@ -35,7 +35,7 @@ const JobListing = () => {
     <div>
       <h1 className="gradient-title font-extrabold text-6xl sm:text-7xl text-center pb-8">Latest Jobs</h1>
 
-      <form onSubmit={handleSearch}>
+      <form onSubmit={handleSearch} className="h-14 flex w-full gap-2 items-center mb-3">
         <Input type="text" placeholder="Search Jobs by Title..." name="search-query" className="h-full flex-1 px-4 text-md" />
         <Button type="submit" className="h-full sm:w-28" variant="blue">Search</Button>
       </form>
