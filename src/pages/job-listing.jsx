@@ -1,6 +1,7 @@
 import { getCompanies } from '@/api/apiCompanies'
 import { getJobs } from '@/api/apiJobs'
 import JobCard from '@/components/job-card'
+import { Input } from '@/components/ui/input'
 import useFetch from '@/hooks/use-fetch'
 import { useUser } from '@clerk/clerk-react'
 import React, { useEffect, useState } from 'react'
@@ -23,6 +24,8 @@ const JobListing = () => {
     if (isLoaded) fnJobs();
   }, [isLoaded, location, company_id, searchQuery]);
 
+  const handleSearch = () => {}
+
   if(!isLoaded){
     return <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />
   }
@@ -30,6 +33,10 @@ const JobListing = () => {
   return (
     <div>
       <h1 className="gradient-title font-extrabold text-6xl sm:text-7xl text-center pb-8">Latest Jobs</h1>
+
+      <form onSubmit={handleSearch}>
+        <Input type="text" placeholder="Search Jobs by Title..." />
+      </form>
       
       {loadingJobs && (<BarLoader className="mt-4" width={"100%"} color="#36d7b7" />)}
       {loadingJobs === false && (
