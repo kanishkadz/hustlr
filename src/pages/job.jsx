@@ -66,8 +66,11 @@ const JobPage = () => {
             <SelectValue placeholder={"Hiring Status" + (job?.isOpen ? "(Open)" : "(Closed)")} />
           </SelectTrigger>
           <SelectContent>
-                  <SelectItem key={name} value={name}>
-                    {name}
+                  <SelectItem value="open">
+                    Open
+                  </SelectItem>
+                  <SelectItem value="closed">
+                    Closed
                   </SelectItem>
           </SelectContent>
         </Select>
