@@ -12,10 +12,10 @@ const JobListing = () => {
   };
 
   useEffect(() => {
-
+    fetchJobs();
 
     getJobs();
-  }, [])
+  }, []);
 
   return (
     <div>
