@@ -61,20 +61,14 @@ const JobPage = () => {
       </div>
 
       {job?.recruiter_id === user?.id &&
-        <Select value={location} onValueChange={(value) => setLocation(value)}>
+        <Select onValueChange={handleStatusChange}>
           <SelectTrigger>
-            <SelectValue placeholder="Filter by Location" />
+            <SelectValue placeholder={"Hiring Status" + (job?.isOpen ? "(Open)" : "(Closed)")} />
           </SelectTrigger>
           <SelectContent>
-            <SelectGroup>
-              {State.getStatesOfCountry("IN").map(({ name }) => {
-                return (
                   <SelectItem key={name} value={name}>
                     {name}
                   </SelectItem>
-                );
-              })}
-            </SelectGroup>
           </SelectContent>
         </Select>
       }
