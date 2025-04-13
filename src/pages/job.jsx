@@ -1,4 +1,4 @@
-import { getSingleJob } from '@/api/apiJobs';
+import { getSingleJob, updateHiringStatus } from '@/api/apiJobs';
 import useFetch from '@/hooks/use-fetch';
 import { useUser } from '@clerk/clerk-react'
 import MDEditor from '@uiw/react-md-editor';
@@ -16,6 +16,13 @@ const JobPage = () => {
     data: job,
     fn: fnJob,
   } = useFetch(getSingleJob, {
+    job_id: id,
+  });
+
+  const {
+    loading: loadingHiringStatus,
+    fn: fnHiringStatus,
+  } = useFetch(updateHiringStatus, {
     job_id: id,
   });
 
@@ -47,7 +54,7 @@ const JobPage = () => {
         </div>
       </div>
 
-      
+
 
       <h2 className="text-2xl sm:text-3xl font-bold">About the Job</h2>
       <p className="sm:text-lg">{job?.description}</p>
