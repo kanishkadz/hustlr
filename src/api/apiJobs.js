@@ -27,7 +27,7 @@ export async function getJobs(token, {location, company_id, searchQuery}){
     return data;
 }
 
-export async function savJob(token, {alreadySaved}, saveData){
+export async function saveJob(token, {alreadySaved}, saveData){
     const supabase = await supabaseClient(token);
 
     if(alreadySaved){

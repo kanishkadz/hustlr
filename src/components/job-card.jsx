@@ -4,6 +4,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './ui/card'
 import { Heart, MapPinIcon, Trash2Icon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
+import useFetch from '@/hooks/use-fetch';
 
 const JobCard = ({
     job, 
@@ -11,7 +12,16 @@ const JobCard = ({
     savedInit = false,
     onJobSaved = () => {}, 
 }) => {
+    const {fn: fnSavedJob, data:SavedJob, loading:loadingSavedJob} = useFetch(saveJob);
+
     const {user} = useUser();
+
+    const handleSaveJob = async() => {
+        await fnSavedJob({
+            user_id: user.id,
+            job_id: job.id,
+        });
+    };
     
   return (
     <Card>
