@@ -1,10 +1,21 @@
+import { useUser } from '@clerk/clerk-react'
 import React from 'react'
+import { Card, CardHeader, CardTitle } from './ui/card';
 
-const JobCard = () => {
+const JobCard = ({
+    job, 
+    isMyJob = false, 
+    savedInit = false,
+    onJobSaved = () => {}, 
+}) => {
+    const {user} = useUser();
+    
   return (
-    <div>
-        
-    </div>
+    <Card>
+        <CardHeader>
+            <CardTitle>{job.title}</CardTitle>
+        </CardHeader>
+    </Card>
   )
 }
 
