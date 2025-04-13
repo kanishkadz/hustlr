@@ -1,6 +1,7 @@
 import { getSingleJob } from '@/api/apiJobs';
 import useFetch from '@/hooks/use-fetch';
 import { useUser } from '@clerk/clerk-react'
+import { MapPinIcon } from 'lucide-react';
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { BarLoader } from 'react-spinners';
@@ -32,8 +33,11 @@ const JobPage = () => {
         <img src={job?.company?.logo_url} className="h-12" alt={job?.title} />
       </div>
 
-      <div>
-
+      <div className="flex justify-between">
+        <div className="flex gap-2">
+          <MapPinIcon />
+          {job?.location}
+        </div>
       </div>
     </div>
   )
