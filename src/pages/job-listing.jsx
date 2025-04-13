@@ -33,7 +33,13 @@ const JobListing = () => {
 
     const query = formData.get("search-query");
     if (query) setSearchQuery(query);
-  }
+  };
+
+  const clearFilters = () => {
+    setSearchQuery("");
+    setCompany_id("");
+    setLocation("");
+  };
 
   if (!isLoaded) {
     return <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />
@@ -78,6 +84,8 @@ const JobListing = () => {
             </SelectGroup>
           </SelectContent>
         </Select>
+
+        <Button onClick={clearFilters} variant="destructive" className="sm:w-1/2">Clear Filters</Button>
       </div>
 
       {loadingJobs && (<BarLoader className="mt-4" width={"100%"} color="#36d7b7" />)}
