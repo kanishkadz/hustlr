@@ -30,6 +30,7 @@ const JobListing = () => {
     let formData = new FormData(e.target);
 
     const query = formData.get("search-query");
+    if(query) setSearchQuery(query);
   }
 
   if(!isLoaded){
