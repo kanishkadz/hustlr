@@ -10,7 +10,9 @@ const Onboarding = () => {
   }
 
   return (
-    <div>Onboarding</div>
+    <div>
+      <h2 className="gradient-title font-extrabold text-7xl sm:text-8xl tracking-tighter">I am a... </h2>
+    </div>
   )
 }
 
