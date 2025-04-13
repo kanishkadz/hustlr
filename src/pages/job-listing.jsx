@@ -3,9 +3,10 @@ import { getJobs } from '@/api/apiJobs'
 import JobCard from '@/components/job-card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import useFetch from '@/hooks/use-fetch'
 import { useUser } from '@clerk/clerk-react'
+import { State } from 'country-state-city'
 import React, { useEffect, useState } from 'react'
 import { BarLoader } from 'react-spinners'
 
@@ -48,14 +49,18 @@ const JobListing = () => {
       </form>
 
       <div>
-        <Select>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Theme" />
+        <Select value={location} onValueChange={(value) => setLocation(value)}>
+          <SelectTrigger>
+            <SelectValue placeholder="Filter by Location" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="light">Light</SelectItem>
-            <SelectItem value="dark">Dark</SelectItem>
-            <SelectItem value="system">System</SelectItem>
+            <SelectGroup>
+              {State.getStatesOfCountry("IN").map(({name}) => {
+                return (
+                  <SelectItem key={name} value={name}>{name}</SelectItem>
+                );
+              })}
+            </SelectGroup>
           </SelectContent>
         </Select>
       </div>
