@@ -10,9 +10,9 @@ const JobListing = () => {
   const [company_id, setCompany_id] = useState("");
   const {isLoaded} = useUser()
   
-  const {fn: fnJobs, data:dataJobs, loading:loadingJobs} = useFetch(getJobs, {location, company_id, searchQuery});
+  const {fn: fnJobs, data:jobs, loading:loadingJobs} = useFetch(getJobs, {location, company_id, searchQuery});
 
-  console.log(dataJobs);
+  console.log(jobs);
 
   useEffect(() => {
     if (isLoaded) fnJobs();
@@ -27,6 +27,17 @@ const JobListing = () => {
       <h1 className="gradient-title font-extrabold text-6xl sm:text-7xl text-center pb-8">Latest Jobs</h1>
       
       {loadingJobs && (<BarLoader className="mt-4" width={"100%"} color="#36d7b7" />)}
+      {loadingJobs === false && (
+        <div> 
+          {jobs?.length ? (
+            jobs.map((job) => {
+              return <span>{job.title}</span>
+            })
+          ) : (
+            <div> No Jobs Found! 😥 </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }
