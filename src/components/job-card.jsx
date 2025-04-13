@@ -14,7 +14,7 @@ const JobCard = ({
     onJobSaved = () => {}, 
 }) => {
     const [saved, setSaved] = useState(savedInit);
-    const {fn: fnSavedJob, data:savedJob, loading:loadingSavedJob} = useFetch(saveJob);
+    const {fn: fnSavedJob, data:savedJob, loading:loadingSavedJob} = useFetch(saveJob, {alreadySaved: saved});
 
     const {user} = useUser();
 
