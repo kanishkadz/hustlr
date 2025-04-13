@@ -39,7 +39,7 @@ const JobPage = () => {
           {job?.location}
         </div>
         <div className="flex gap-2">
-          <Briefcase /> {job?.applicants?.length} Applicants
+          <Briefcase /> {job?.applications?.length} Applicants
         </div>
       </div>
     </div>
