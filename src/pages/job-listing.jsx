@@ -35,7 +35,7 @@ const JobListing = () => {
       <h1 className="gradient-title font-extrabold text-6xl sm:text-7xl text-center pb-8">Latest Jobs</h1>
 
       <form onSubmit={handleSearch}>
-        <Input type="text" placeholder="Search Jobs by Title..." />
+        <Input type="text" placeholder="Search Jobs by Title..." name="search-query" className="h-full flex-1 px-4 text-md" />
       </form>
       
       {loadingJobs && (<BarLoader className="mt-4" width={"100%"} color="#36d7b7" />)}
