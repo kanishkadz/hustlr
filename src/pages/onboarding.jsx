@@ -14,8 +14,10 @@ const Onboarding = () => {
       unsafeMetadata: {role},
     }).then(() => {
       navigate(role === 'recruiter' ? "/post-job" : "/jobs");      
-    })
-  }
+    }).catch((err) => {
+      console.log("Error updating role", err);
+    });
+  };
 
   if(!isLoaded){
     return <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />
