@@ -1,4 +1,5 @@
 import { getSingleJob, updateHiringStatus } from '@/api/apiJobs';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import useFetch from '@/hooks/use-fetch';
 import { useUser } from '@clerk/clerk-react'
 import MDEditor from '@uiw/react-md-editor';
@@ -8,8 +9,8 @@ import { useParams } from 'react-router-dom';
 import { BarLoader } from 'react-spinners';
 
 const JobPage = () => {
-  const {isLoaded, user} = useUser();
-  const {id} = useParams();
+  const { isLoaded, user } = useUser();
+  const { id } = useParams();
 
   const {
     loading: loadingJob,
@@ -27,14 +28,15 @@ const JobPage = () => {
   });
 
   const handleStatusChange = (value) => {
-    const isOpen = value === "open"
+    const isOpen = value === "open";
+    fnHiringStatus(isOpen).then(() => fnJob());
   }
 
   useEffect(() => {
-    if(isLoaded) fnJob();
+    if (isLoaded) fnJob();
   }, [isLoaded]);
 
-  if(!isLoaded || loadingJob){
+  if (!isLoaded || loadingJob) {
     return <BarLoader className='mb-4' width={"100%"} color='#36d7b7' />;
   }
 
@@ -54,11 +56,28 @@ const JobPage = () => {
           <Briefcase /> {job?.applications?.length} Applicants
         </div>
         <div className="flex gap-2">
-          {job?.isOpen?<><DoorOpen/>Open</> : <><DoorClosed/>Closed</>}
+          {job?.isOpen ? <><DoorOpen />Open</> : <><DoorClosed />Closed</>}
         </div>
       </div>
 
-
+      {job?.recruiter_id === user?.id &&
+        <Select value={location} onValueChange={(value) => setLocation(value)}>
+          <SelectTrigger>
+            <SelectValue placeholder="Filter by Location" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              {State.getStatesOfCountry("IN").map(({ name }) => {
+                return (
+                  <SelectItem key={name} value={name}>
+                    {name}
+                  </SelectItem>
+                );
+              })}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      }
 
       <h2 className="text-2xl sm:text-3xl font-bold">About the Job</h2>
       <p className="sm:text-lg">{job?.description}</p>
