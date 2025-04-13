@@ -1,7 +1,7 @@
 import { getSingleJob } from '@/api/apiJobs';
 import useFetch from '@/hooks/use-fetch';
 import { useUser } from '@clerk/clerk-react'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 
 const JobPage = () => {
@@ -15,6 +15,10 @@ const JobPage = () => {
   } = useFetch(getSingleJob, {
     job_id: id,
   });
+
+  useEffect(() => {
+    if(isLoaded) fnJob();
+  }, [isLoaded]);
 
   return (
     <div>JobPage</div>
