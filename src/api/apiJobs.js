@@ -3,7 +3,7 @@ import supabaseClient from "@/utils/supabase";
 export async function getJobs(token){
     const supabase = await supabaseClient(token);
 
-    let query = supabase.from("jobs").select("*");
+    let query = supabase.from("jobs").select("*, company: companies(name, logo-url");
 
     if(location){
         query = query.eq("location", location);
