@@ -5,6 +5,18 @@ export async function getJobs(token){
 
     let query = supabase.from("jobs").select("*");
 
+    if(location){
+        query = query.eq("location", location);
+    }
+
+    if(company_id){
+        query = query.eq("company_id", company_id);
+    }
+
+    if(searchQuery){
+        query = query.ilike("title", `%${searchQuery}`);
+    }
+
     const { data, error } = await query;
 
     if(error){
