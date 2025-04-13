@@ -1,6 +1,6 @@
 import { useUser } from '@clerk/clerk-react'
 import React from 'react'
-import { Card, CardHeader, CardTitle } from './ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Trash2Icon } from 'lucide-react';
 
 const JobCard = ({
@@ -18,8 +18,12 @@ const JobCard = ({
                 {job.title}
                 {isMyJob && <Trash2Icon fill="red" size={18} className="text-red-300 cursor-pointer" />}
             </CardTitle>
-            
         </CardHeader>
+        <CardContent>
+            <div>
+                {job.company && <img src={job.company.logo_url} className="h-6" />}
+            </div>
+        </CardContent>
     </Card>
   )
 }
