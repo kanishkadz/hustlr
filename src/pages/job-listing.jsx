@@ -15,7 +15,7 @@ const JobListing = () => {
 
   useEffect(() => {
     if (isLoaded) fnJobs();
-  }, [isLoaded]);
+  }, [isLoaded, location, company_id, searchQuery]);
 
   return (
     <div>
