@@ -3,6 +3,7 @@ import { getJobs } from '@/api/apiJobs'
 import JobCard from '@/components/job-card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import useFetch from '@/hooks/use-fetch'
 import { useUser } from '@clerk/clerk-react'
 import React, { useEffect, useState } from 'react'
@@ -12,10 +13,10 @@ const JobListing = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [location, setLocation] = useState("");
   const [company_id, setCompany_id] = useState("");
-  const {isLoaded} = useUser()
-  
-  const {fn: fnJobs, data:jobs, loading:loadingJobs} = useFetch(getJobs, {location, company_id, searchQuery});
-  const {fn: fnCompanies, data:companies} = useFetch(getCompanies);
+  const { isLoaded } = useUser()
+
+  const { fn: fnJobs, data: jobs, loading: loadingJobs } = useFetch(getJobs, { location, company_id, searchQuery });
+  const { fn: fnCompanies, data: companies } = useFetch(getCompanies);
 
   useEffect(() => {
     if (isLoaded) fnCompanies();
@@ -30,10 +31,10 @@ const JobListing = () => {
     let formData = new FormData(e.target);
 
     const query = formData.get("search-query");
-    if(query) setSearchQuery(query);
+    if (query) setSearchQuery(query);
   }
 
-  if(!isLoaded){
+  if (!isLoaded) {
     return <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />
   }
 
@@ -45,10 +46,23 @@ const JobListing = () => {
         <Input type="text" placeholder="Search Jobs by Title..." name="search-query" className="h-full flex-1 px-4 text-md" />
         <Button type="submit" className="h-full sm:w-28" variant="blue">Search</Button>
       </form>
-      
+
+      <div>
+        <Select>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Theme" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="light">Light</SelectItem>
+            <SelectItem value="dark">Dark</SelectItem>
+            <SelectItem value="system">System</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
       {loadingJobs && (<BarLoader className="mt-4" width={"100%"} color="#36d7b7" />)}
       {loadingJobs === false && (
-        <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4"> 
+        <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {jobs?.length ? (
             jobs.map((job) => {
               return <JobCard key={job.id} job={job} savedInit={job?.saved?.length > 0} />
