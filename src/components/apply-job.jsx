@@ -106,19 +106,6 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>
-
-            {job?.applications?.length > 0 && job?.recruiter_id === user?.id && (
-                <div>
-                    <h2 className="text-2xl sm:text-3xl font-bold">Applications</h2>
-                    {job?.applications.map(() => {
-                        return <ApplicationCard 
-                            key={application.id}
-                            application={application}
-                         />
-                    })}
-                </div>
-            )}
-
         </div>
     )
 }
