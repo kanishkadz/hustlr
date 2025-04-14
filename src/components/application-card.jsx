@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { BriefcaseBusiness, Download } from 'lucide-react'
 
 const ApplicationCard = ({ application, isCandidate = false }) => {
-    const handleDownload () => {
+    const handleDownload = () => {
         const link = document.createElement("a");
         link.href = application?.resume;
         link.target = "_blank";
