@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './ui/card'
 import { Boxes, BriefcaseBusiness, Download, School } from 'lucide-react'
 
 const ApplicationCard = ({ application, isCandidate = false }) => {
@@ -25,7 +25,11 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
                 <div className="flex gap-2 items-center"><School size={15} /> {application?.education}</div>
                 <div className="flex gap-2 items-center"><Boxes size={15} /> Skills: {application?.skills}</div>
             </div>
+            <hr />
         </CardContent>
+        <CardFooter>
+            <span>{new Date(application?.created_at).toLocaleString()}</span>
+        </CardFooter>
     </Card>
   )
 }
