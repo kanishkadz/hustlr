@@ -63,6 +63,7 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
                             )}
                         />
 
+                        {errors.education && (<p className="text-red-500">{errors.education.message}</p>)}
 
                         <Input type="file" accept=".pdf .doc .docx" className="flex-1 file:text-gray-500" />
                         <Button type="submit" variant="blue" size="lg">Apply</Button>
