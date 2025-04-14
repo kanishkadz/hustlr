@@ -29,6 +29,9 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
         </CardContent>
         <CardFooter>
             <span>{new Date(application?.created_at).toLocaleString()}</span>
+            {isCandidate?(
+                <span>Status: {application?.status}</span>
+            ) : <></>}
         </CardFooter>
     </Card>
   )
