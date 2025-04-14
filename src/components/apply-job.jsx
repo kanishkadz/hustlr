@@ -10,6 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import useFetch from '@/hooks/use-fetch'
 import { applyToJob } from '@/api/apiApplications'
 import { BarLoader } from 'react-spinners'
+import ApplicationCard from './application-card'
 
 const schema = z.object({
     experience: z.number().min(0, { message: "Experience must be at least 0" }).int(),
@@ -110,7 +111,10 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
                 <div>
                     <h2 className="text-2xl sm:text-3xl font-bold">Applications</h2>
                     {job?.applications.map(() => {
-                        return <ApplicationCard />
+                        return <ApplicationCard 
+                            key={application.id}
+                            application={application}
+                         />
                     })}
                 </div>
             )}
