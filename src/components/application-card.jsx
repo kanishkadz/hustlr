@@ -19,7 +19,7 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
             </CardTitle>
         </CardHeader>
 
-        <CardContent>
+        <CardContent className="flex flex-col gap-4 flex-1">
             <div className="flex flex-col md:flex-row justify-between">
                 <div className="flex gap-2 items-center"><BriefcaseBusiness size={15} /> {application?.experience} years of experience.</div>
                 <div className="flex gap-2 items-center"><School size={15} /> {application?.education}</div>
