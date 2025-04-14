@@ -13,7 +13,7 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
                 </DrawerTrigger>
                 <DrawerContent>
                     <DrawerHeader>
-                        <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+                        <DrawerTitle>Apply for {job?.title} at {job?.company?.name}</DrawerTitle>
                         <DrawerDescription>This action cannot be undone.</DrawerDescription>
                     </DrawerHeader>
                     <DrawerFooter>
