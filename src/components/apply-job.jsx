@@ -46,7 +46,7 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
                     </form>
 
                     <DrawerFooter>
-                        <DrawerClose>
+                        <DrawerClose asChild>
                             <Button variant="outline">Cancel</Button>
                         </DrawerClose>
                     </DrawerFooter>
