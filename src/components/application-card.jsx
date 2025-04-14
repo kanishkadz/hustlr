@@ -45,7 +45,7 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
         </CardContent>
         <CardFooter className="flex justify-between">
             <span>{new Date(application?.created_at).toLocaleString()}</span>
-            {!isCandidate?(
+            {isCandidate?(
                 <span className="capitalize font-bold">Status: {application?.status}</span>
             ) : (
                 <Select onValueChange={handleStatusChange} defaultValue={application.status}>
