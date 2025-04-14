@@ -7,7 +7,7 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
         <div>
             <Drawer open={applied ? false : undefined}>
                 <DrawerTrigger>
-                    <Button variant={job?.isOpen && !applied ? "blue" : "destructive"} disabled={!job?.isOpen || applied}>
+                    <Button size="lg" variant={job?.isOpen && !applied ? "blue" : "destructive"} disabled={!job?.isOpen || applied}>
                         {job?.isOpen ? (applied ? "Applied" : "Apply") : "Hiring Closed"}
                     </Button>
                 </DrawerTrigger>
