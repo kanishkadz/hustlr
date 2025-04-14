@@ -1,6 +1,7 @@
 import React from 'react'
 import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from './ui/drawer'
 import { Button } from './ui/button'
+import { Input } from './ui/input'
 
 const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
     return (
@@ -16,6 +17,11 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
                         <DrawerTitle>Apply for {job?.title} at {job?.company?.name}</DrawerTitle>
                         <DrawerDescription>Please fill the form below.</DrawerDescription>
                     </DrawerHeader>
+
+                    <form>
+                        <Input type="number" placeholder="Years of Experience" className="flex-1" />
+                    </form>
+
                     <DrawerFooter>
                         <Button>Submit</Button>
                         <DrawerClose>
