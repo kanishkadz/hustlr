@@ -5,19 +5,19 @@ import { Input } from './ui/input'
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { z } from 'zod'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 const schema = z.object({
-    experience: z.number().min(0, {message: "Experience must be at least 0"}).int(),
-    skills: z.string().min(1, {message: "Skills are required"}),
-    education: z.enum(["Intermediate", "Graduate", "Post Graduate"], {message: "Education is required"}),
-    resume: z.any().refine(file => file[0] && (file[0].type === "application/pdf" || file[0].type === "application/msword"), {message: "Only PDF or Word Documents are allowed"}),
+    experience: z.number().min(0, { message: "Experience must be at least 0" }).int(),
+    skills: z.string().min(1, { message: "Skills are required" }),
+    education: z.enum(["Intermediate", "Graduate", "Post Graduate"], { message: "Education is required" }),
+    resume: z.any().refine(file => file[0] && (file[0].type === "application/pdf" || file[0].type === "application/msword"), { message: "Only PDF or Word Documents are allowed" }),
 });
 
 
 const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
-    const {register, handleSubmit, control, formState:{errors}, reset} = useForm({
+    const { register, handleSubmit, control, formState: { errors }, reset } = useForm({
         resolver: zodResolver(schema),
     })
 
@@ -36,25 +36,33 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
                     </DrawerHeader>
 
                     <form className="flex flex-col gap-4 p-4 pb-0">
-                        <Input type="number" placeholder="Years of Experience" className="flex-1" {...register("experience", {valueAsNumber: true})} />
+                        <Input type="number" placeholder="Years of Experience" className="flex-1" {...register("experience", { valueAsNumber: true })} />
                         {errors.experience && (<p className="text-red-500">{errors.experience.message}</p>)}
                         <Input type="text" placeholder="Skills (Comma Seperated)" className="flex-1" {...register("skills")} />
                         {errors.skills && (<p className="text-red-500">{errors.skills.message}</p>)}
 
-                        <RadioGroup defaultValue="option-one">
-                            <div className="flex items-center space-x-2">
-                                <RadioGroupItem value="Intermediate" id="intermediate" />
-                                <Label htmlFor="intermediate">Intermediate</Label>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                                <RadioGroupItem value="Graduate" id="graduate" />
-                                <Label htmlFor="graduate">Graduate</Label>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                                <RadioGroupItem value="Post Graduate" id="post-graduate" />
-                                <Label htmlFor="post-graduate">Post Graduate</Label>
-                            </div>
-                        </RadioGroup>
+                        <Controller
+                            name='education'
+                            control={control}
+                            render={({ field }) => (
+                                <RadioGroup defaultValue="option-one">
+                                    <div className="flex items-center space-x-2">
+                                        <RadioGroupItem value="Intermediate" id="intermediate" />
+                                        <Label htmlFor="intermediate">Intermediate</Label>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <RadioGroupItem value="Graduate" id="graduate" />
+                                        <Label htmlFor="graduate">Graduate</Label>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <RadioGroupItem value="Post Graduate" id="post-graduate" />
+                                        <Label htmlFor="post-graduate">Post Graduate</Label>
+                                    </div>
+                                </RadioGroup>
+
+                            )}
+                        />
+
 
                         <Input type="file" accept=".pdf .doc .docx" className="flex-1 file:text-gray-500" />
                         <Button type="submit" variant="blue" size="lg">Apply</Button>
