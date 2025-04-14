@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ApplicationCard = () => {
+const ApplicationCard = ({ application, isCandidate = false }) => {
   return (
     <div>ApplicationCard</div>
   )
