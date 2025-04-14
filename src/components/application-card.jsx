@@ -4,6 +4,7 @@ import { Boxes, BriefcaseBusiness, Download, School } from 'lucide-react'
 import useFetch from '@/hooks/use-fetch';
 import { updateApplicationStatus } from '@/api/apiApplications';
 import { BarLoader } from 'react-spinners';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 
 const ApplicationCard = ({ application, isCandidate = false }) => {
     const handleDownload = () => {
@@ -19,6 +20,10 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
             job_id: application.job_id,
         }
     );
+
+    const handleStatusChange = (status) => {
+        fnHiringStatus(status);
+    }
 
   return (
     <Card>
@@ -42,7 +47,19 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
             <span>{new Date(application?.created_at).toLocaleString()}</span>
             {!isCandidate?(
                 <span className="capitalize font-bold">Status: {application?.status}</span>
-            ) : <></>}
+            ) : (
+                <Select onValueChange={handleStatusChange}>
+                    <SelectTrigger className="w-52">
+                        <SelectValue placeholder="Application Status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="applied">Applied</SelectItem>
+                        <SelectItem value="interviewing">Interviewing</SelectItem>
+                        <SelectItem value="hired">Hired</SelectItem>
+                        <SelectItem value="rejected">Rejected</SelectItem>
+                    </SelectContent>
+                </Select>
+            )}
         </CardFooter>
     </Card>
   )
