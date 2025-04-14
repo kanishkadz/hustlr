@@ -36,8 +36,8 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
                     </DrawerHeader>
 
                     <form className="flex flex-col gap-4 p-4 pb-0">
-                        <Input type="number" placeholder="Years of Experience" className="flex-1" />
-                        <Input type="text" placeholder="Skills (Comma Seperated)" className="flex-1" />
+                        <Input type="number" placeholder="Years of Experience" className="flex-1" {...register("experience", {valueAsNumber: true})} />
+                        <Input type="text" placeholder="Skills (Comma Seperated)" className="flex-1" {...register("skills")} />
 
                         <RadioGroup defaultValue="option-one">
                             <div className="flex items-center space-x-2">
