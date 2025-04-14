@@ -38,6 +38,9 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
             name: user.fullName,
             status: "applied",
             resume: data.resume[0],
+        }).then(() => {
+            fetchJob();
+            reset();
         })
     };
 
