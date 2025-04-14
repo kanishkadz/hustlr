@@ -27,12 +27,16 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
 
                         <RadioGroup defaultValue="option-one">
                             <div className="flex items-center space-x-2">
-                                <RadioGroupItem value="option-one" id="option-one" />
-                                <Label htmlFor="option-one">Option One</Label>
+                                <RadioGroupItem value="Intermediate" id="intermediate" />
+                                <Label htmlFor="intermediate">Intermediate</Label>
                             </div>
                             <div className="flex items-center space-x-2">
-                                <RadioGroupItem value="option-two" id="option-two" />
-                                <Label htmlFor="option-two">Option Two</Label>
+                                <RadioGroupItem value="Graduate" id="graduate" />
+                                <Label htmlFor="graduate">Graduate</Label>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                                <RadioGroupItem value="Post Graduate" id="post-graduate" />
+                                <Label htmlFor="post-graduate">Post Graduate</Label>
                             </div>
                         </RadioGroup>
 
