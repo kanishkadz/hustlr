@@ -7,6 +7,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { z } from 'zod'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import useFetch from '@/hooks/use-fetch'
+import { applyToJob } from '@/api/apiApplications'
 
 const schema = z.object({
     experience: z.number().min(0, { message: "Experience must be at least 0" }).int(),
@@ -19,7 +21,13 @@ const schema = z.object({
 const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
     const { register, handleSubmit, control, formState: { errors }, reset } = useForm({
         resolver: zodResolver(schema),
-    })
+    });
+
+    const {
+        loading: loadingApply,
+        error: errorApply,
+        fn: fnApply,
+    } = useFetch(applyToJob);
 
     return (
         <div>
