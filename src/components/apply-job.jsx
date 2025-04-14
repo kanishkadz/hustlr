@@ -5,6 +5,8 @@ import { Input } from './ui/input'
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { z } from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 const schema = z.object({
     experience: z.number().min(0, {message: "Experience must be at least 0"}).int(),
@@ -15,6 +17,10 @@ const schema = z.object({
 
 
 const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
+    const {register, handleSubmit, control, formState:{errors}, reset} = useForm({
+        resolver: zodResolver(schema),
+    })
+
     return (
         <div>
             <Drawer open={applied ? false : undefined}>
