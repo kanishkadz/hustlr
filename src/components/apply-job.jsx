@@ -41,11 +41,11 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
                         </RadioGroup>
 
                         <Input type="file" accept=".pdf .doc .docx" className="flex-1 file:text-gray-500" />
+                        <Button type="submit" variant="blue" size="lg">Apply</Button>
 
                     </form>
 
                     <DrawerFooter>
-                        <Button>Submit</Button>
                         <DrawerClose>
                             <Button variant="outline">Cancel</Button>
                         </DrawerClose>
