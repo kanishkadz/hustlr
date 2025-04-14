@@ -1,6 +1,6 @@
 import React from 'react'
-import { Card, CardHeader, CardTitle } from './ui/card'
-import { Download } from 'lucide-react'
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import { BriefcaseBusiness, Download } from 'lucide-react'
 
 const ApplicationCard = ({ application, isCandidate = false }) => {
     const handleDownload () => {
@@ -18,6 +18,12 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
                 <Download size={18} className="bg-white text-black rounded-full h-8 w-8 p-1.5 cursor-pointer" onClick={handleDownload} />
             </CardTitle>
         </CardHeader>
+
+        <CardContent>
+            <div>
+                <div className="flex gap-2 items-center"><BriefcaseBusiness size={15} /> {application?.experience} years of experience.</div>
+            </div>
+        </CardContent>
     </Card>
   )
 }
