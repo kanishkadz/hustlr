@@ -40,6 +40,8 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
                             </div>
                         </RadioGroup>
 
+                        <Input type="file" accept=".pdf .doc .docx" className="flex-1 file:text-gray-500" />
+
                     </form>
 
                     <DrawerFooter>
