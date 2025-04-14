@@ -29,6 +29,17 @@ const ApplyJobDrawer = ({ user, job, applied = false, fetchJob }) => {
         fn: fnApply,
     } = useFetch(applyToJob);
 
+    const onSubmit = (data) => {
+        fnApply({
+            ...data,
+            job_id: job_id,
+            candidate_id: user.id,
+            name: user.fullName,
+            status: "applied",
+            resume: data.resume[0],
+        })
+    };
+
     return (
         <div>
             <Drawer open={applied ? false : undefined}>
