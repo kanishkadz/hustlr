@@ -1,4 +1,4 @@
-import supabaseClient from "@/utils/supabase";
+import supabaseClient, { supabaseUrl } from "@/utils/supabase";
 
 export async function applyToJob(token, _, jobData){
     const supabase = await supabaseClient(token);
@@ -13,12 +13,14 @@ export async function applyToJob(token, _, jobData){
         return null;
     }
 
-    const resume = `${supab}`
+    const resume = `${supabaseUrl}/storage/v1/object/public/resumes/${fileName}`;
 
-    const {data, error} = await supabase.from("companies").select("*");
+    const {data, error} = await supabase.from("applications").insert([{
+        ...jobData, resume,
+    },]).select();
 
     if(error) {
-        console.error("Error Fetching Companies:", error);
+        console.error("Error Submiting Application:", error);
         return null;
     }
     return data;    

@@ -83,7 +83,7 @@ const JobPage = () => {
       <h2 className="text-2xl sm:text-3xl font-bold">What we are looking for?</h2>
       <MDEditor.Markdown source={job?.requirements} className="bg-transparent sm:text-lg" />
 
-
+      {job?.recruiter_id !== user?.id && }
     </div>
   )
 }
