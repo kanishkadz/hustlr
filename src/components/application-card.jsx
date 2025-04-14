@@ -48,7 +48,7 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
             {!isCandidate?(
                 <span className="capitalize font-bold">Status: {application?.status}</span>
             ) : (
-                <Select onValueChange={handleStatusChange}>
+                <Select onValueChange={handleStatusChange} defaultValue={application.status}>
                     <SelectTrigger className="w-52">
                         <SelectValue placeholder="Application Status" />
                     </SelectTrigger>
