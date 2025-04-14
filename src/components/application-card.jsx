@@ -3,6 +3,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './ui/card'
 import { Boxes, BriefcaseBusiness, Download, School } from 'lucide-react'
 import useFetch from '@/hooks/use-fetch';
 import { updateApplicationStatus } from '@/api/apiApplications';
+import { BarLoader } from 'react-spinners';
 
 const ApplicationCard = ({ application, isCandidate = false }) => {
     const handleDownload = () => {
@@ -21,6 +22,7 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
 
   return (
     <Card>
+        {loadingHiringStatus && <BarLoader width={"100%"} color="#36d7b7" />}
         <CardHeader>
             <CardTitle className="flex justify-between font-bold">
                 {isCandidate ? `${application?.job?.title} at ${application?.job?.company?.name}` : application?.name}
