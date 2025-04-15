@@ -104,6 +104,8 @@ const PostJob = () => {
               </SelectGroup>
             </SelectContent>
           </Select>
+
+          
         </div>
       </form>
     </div>
