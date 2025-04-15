@@ -20,7 +20,7 @@ const schema = z.object({
 });
 
 const PostJob = () => {
-  const {isLoaded, user} = useUser();
+  const { isLoaded, user } = useUser();
 
   const { register, control, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
@@ -71,6 +71,26 @@ const PostJob = () => {
             {State.getStatesOfCountry("IN").map(({ name }) => {
               return (
                 <SelectItem key={name} value={name}>
+                  {name}
+                </SelectItem>
+              );
+            })}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+
+      <Select
+        //value={company_id}
+        //onValueChange={(value) => setCompany_id(value)}
+      >
+        <SelectTrigger>
+          <SelectValue placeholder="Filter by Company" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            {companies?.map(({ name, id }) => {
+              return (
+                <SelectItem key={name} value={id}>
                   {name}
                 </SelectItem>
               );
