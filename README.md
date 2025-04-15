@@ -1,12 +1,22 @@
-# React + Vite
+# 💼 HustLr
+**HustLr** is a modern **Job Portal** built with **React** for the frontend and powered by **Supabase** for backend services. The platform allows users to browse and apply for jobs, while companies can post and manage job listings. **Clerk** is used for secure and seamless authentication.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 🌟 Features  
+- **Job Listings:** Users can explore and search for jobs posted by companies.  
+- **Job Posting:** Companies can create and manage job listings.  
+- **User Authentication:** Secure sign-up and login powered by Clerk.  
+- **Real-Time Database:** Supabase provides backend services including real-time updates and storage.  
+- **Responsive Design:** Mobile-friendly interface optimized for all devices.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack  
+- **Frontend Framework:** React  
+- **Backend Services:** Supabase (Database & API)  
+- **Authentication:** Clerk  
+- **Language:** JavaScript  
+- **State Management:** React Hooks 
+- **Styling:** Tailwind
+- **Hosting:** Vercel
