@@ -22,7 +22,9 @@ const PostJob = () => {
   });
 
   return (
-    <div>PostJob</div>
+    <div className="gradient-title font-extrabold text-5xl sm:text-7xl text-center pb-8">
+      <h1>Post a Jon</h1>
+    </div>
   )
 }
 
