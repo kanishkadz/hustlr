@@ -1,20 +1,27 @@
+import { getCompanies } from '@/api/apiCompanies';
 import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
+import useFetch from '@/hooks/use-fetch';
+import { useUser } from '@clerk/clerk-react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import React from 'react'
+import { State } from 'country-state-city';
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import { z } from 'zod'
 
 const schema = z.object({
-  title: z.string().min(1, {message: "Title is reequest"}),
-  description: z.string().min(1, {message: "Description is required"}),
-  location: z.string().min(1, {message: "Select a location"}),
-  company_id: z.string().min(1, {message: "Select or Add a new Company"}),
-  requirements: z.string().min(1, {message: "Requirements are required"}),
+  title: z.string().min(1, { message: "Title is reequest" }),
+  description: z.string().min(1, { message: "Description is required" }),
+  location: z.string().min(1, { message: "Select a location" }),
+  company_id: z.string().min(1, { message: "Select or Add a new Company" }),
+  requirements: z.string().min(1, { message: "Requirements are required" }),
 });
 
 const PostJob = () => {
-  const {register, control, handleSubmit, formState: { errors }} = useForm({
+  const {isLoaded, user} = useUser();
+
+  const { register, control, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
       location: "",
       company_id: "",
@@ -22,6 +29,18 @@ const PostJob = () => {
     },
     resolver: zodResolver(schema),
   });
+
+  const {
+    data: companies,
+    fn: fnCompanies,
+    loading: loadingCompanies
+  } = useFetch(getCompanies);
+
+  useEffect(() => {
+    if (isLoaded) {
+      fnCompanies();
+    }
+  }, [isLoaded]);
 
   return (
     <div className="gradient-title font-extrabold text-5xl sm:text-7xl text-center pb-8">
@@ -34,6 +53,26 @@ const PostJob = () => {
 
       <Textarea placeholder="Job Description" {...register("description")} />
       {errors.description && <p className="text-red-500">{errors.description.message}</p>}
+
+      <Select
+      //value={location} 
+      //onValueChange={(value) => setLocation(value)}
+      >
+        <SelectTrigger>
+          <SelectValue placeholder="Filter by Location" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            {State.getStatesOfCountry("IN").map(({ name }) => {
+              return (
+                <SelectItem key={name} value={name}>
+                  {name}
+                </SelectItem>
+              );
+            })}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
     </div>
   )
 }
