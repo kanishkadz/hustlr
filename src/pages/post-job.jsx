@@ -1,4 +1,6 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react'
+import { useForm } from 'react-hook-form';
 import { z } from 'zod'
 
 const schema = z.object({
@@ -10,7 +12,14 @@ const schema = z.object({
 });
 
 const PostJob = () => {
-
+  useForm({
+    defaultValues: {
+      location: "",
+      company_id: "",
+      requirements: "",
+    },
+    resolver: zodResolver(schema),
+  });
 
   return (
     <div>PostJob</div>
