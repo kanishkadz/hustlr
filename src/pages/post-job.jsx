@@ -59,50 +59,53 @@ const PostJob = () => {
       <form>
         <Input placeholder="Job Title" {...register("title")} />
         {errors.title && <p className="text-red-500">{errors.title.message}</p>}
+
+
+        <Textarea placeholder="Job Description" {...register("description")} />
+        {errors.description && <p className="text-red-500">{errors.description.message}</p>}
+
+        <div className="flex gap-4 items-center">
+          <Select
+          //value={location} 
+          //onValueChange={(value) => setLocation(value)}
+          >
+            <SelectTrigger>
+              <SelectValue placeholder="Filter by Location" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {State.getStatesOfCountry("IN").map(({ name }) => {
+                  return (
+                    <SelectItem key={name} value={name}>
+                      {name}
+                    </SelectItem>
+                  );
+                })}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+
+          <Select
+          //value={company_id}
+          //onValueChange={(value) => setCompany_id(value)}
+          >
+            <SelectTrigger>
+              <SelectValue placeholder="Filter by Company" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {companies?.map(({ name, id }) => {
+                  return (
+                    <SelectItem key={name} value={id}>
+                      {name}
+                    </SelectItem>
+                  );
+                })}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
       </form>
-
-      <Textarea placeholder="Job Description" {...register("description")} />
-      {errors.description && <p className="text-red-500">{errors.description.message}</p>}
-
-      <Select
-      //value={location} 
-      //onValueChange={(value) => setLocation(value)}
-      >
-        <SelectTrigger>
-          <SelectValue placeholder="Filter by Location" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectGroup>
-            {State.getStatesOfCountry("IN").map(({ name }) => {
-              return (
-                <SelectItem key={name} value={name}>
-                  {name}
-                </SelectItem>
-              );
-            })}
-          </SelectGroup>
-        </SelectContent>
-      </Select>
-
-      <Select
-        //value={company_id}
-        //onValueChange={(value) => setCompany_id(value)}
-      >
-        <SelectTrigger>
-          <SelectValue placeholder="Filter by Company" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectGroup>
-            {companies?.map(({ name, id }) => {
-              return (
-                <SelectItem key={name} value={id}>
-                  {name}
-                </SelectItem>
-              );
-            })}
-          </SelectGroup>
-        </SelectContent>
-      </Select>
     </div>
   )
 }
