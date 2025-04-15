@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { State } from 'country-state-city';
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
+import { BarLoader } from 'react-spinners';
 import { z } from 'zod'
 
 const schema = z.object({
@@ -41,6 +42,10 @@ const PostJob = () => {
       fnCompanies();
     }
   }, [isLoaded]);
+
+  if (!isLoaded || loadingCompanies) {
+    return <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />;
+  }
 
   return (
     <div className="gradient-title font-extrabold text-5xl sm:text-7xl text-center pb-8">
