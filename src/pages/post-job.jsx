@@ -12,7 +12,7 @@ const schema = z.object({
 });
 
 const PostJob = () => {
-  useForm({
+  const {register, control, handleSubmit, formState: { errors }} = useForm({
     defaultValues: {
       location: "",
       company_id: "",
