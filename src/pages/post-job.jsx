@@ -56,7 +56,7 @@ const PostJob = () => {
     <div className="gradient-title font-extrabold text-5xl sm:text-7xl text-center pb-8">
       <h1>Post a Job</h1>
 
-      <form>
+      <form className="flex flex-col gap-4 p-4 pb-0">
         <Input placeholder="Job Title" {...register("title")} />
         {errors.title && <p className="text-red-500">{errors.title.message}</p>}
 
