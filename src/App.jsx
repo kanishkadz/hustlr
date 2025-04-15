@@ -7,7 +7,7 @@ import Onboarding from "./pages/onboarding"
 import JobListing from "./pages/job-listing"
 import JobPage from "./pages/job"
 import PostJob from "./pages/post-job"
-import SavedJobs from "./pages/saved-job"
+import SavedJobs from "./pages/saved-jobs"
 import MyJobs from "./pages/my-jobs"
 import ProtectedRoute from "./components/protected-route";
 
