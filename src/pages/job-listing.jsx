@@ -7,14 +7,7 @@ import useFetch from "@/hooks/use-fetch";
 import JobCard from "@/components/job-card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue, } from "@/components/ui/select";
 
 import { getCompanies } from "@/api/apiCompanies";
 import { getJobs } from "@/api/apiJobs";
@@ -27,6 +20,7 @@ const JobListing = () => {
   const { isLoaded } = useUser();
 
   const {
+    // loading: loadingCompanies,
     data: companies,
     fn: fnCompanies,
   } = useFetch(getCompanies);
@@ -127,6 +121,7 @@ const JobListing = () => {
           </SelectContent>
         </Select>
         <Button
+          className="sm:w-1/2"
           variant="destructive"
           onClick={clearFilters}
         >
