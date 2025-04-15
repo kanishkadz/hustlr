@@ -1,3 +1,4 @@
+import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react'
 import { useForm } from 'react-hook-form';
@@ -24,6 +25,11 @@ const PostJob = () => {
   return (
     <div className="gradient-title font-extrabold text-5xl sm:text-7xl text-center pb-8">
       <h1>Post a Job</h1>
+
+      <form>
+        <Input placeholder="Job Title" {...register("title")} />
+        {errors.title && <p className="text-red-500">{errors.title.message}</p>}
+      </form>
     </div>
   )
 }
