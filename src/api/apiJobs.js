@@ -92,7 +92,6 @@ export async function saveJob(token, { alreadySaved }, saveData) {
   }
 }
 
-
 export async function updateHiringStatus(token, { job_id }, isOpen) {
   const supabase = await supabaseClient(token);
   const { data, error } = await supabase
@@ -108,7 +107,6 @@ export async function updateHiringStatus(token, { job_id }, isOpen) {
 
   return data;
 }
-
 
 export async function getMyJobs(token, { recruiter_id }) {
   const supabase = await supabaseClient(token);
@@ -126,7 +124,6 @@ export async function getMyJobs(token, { recruiter_id }) {
   return data;
 }
 
-
 export async function deleteJob(token, { job_id }) {
   const supabase = await supabaseClient(token);
 
@@ -143,7 +140,6 @@ export async function deleteJob(token, { job_id }) {
 
   return data;
 }
-
 
 export async function addNewJob(token, _, jobData) {
   const supabase = await supabaseClient(token);
