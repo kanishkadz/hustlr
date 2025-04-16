@@ -8,7 +8,7 @@ import { z } from 'zod'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import useFetch from '@/hooks/use-fetch'
-import { applyToJob } from '@/api/apiApplications'
+import { applyToJob } from '@/api/apiApplication'
 import { BarLoader } from 'react-spinners'
 import ApplicationCard from './application-card'
 
