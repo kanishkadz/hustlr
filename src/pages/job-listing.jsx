@@ -20,7 +20,6 @@ const JobListing = () => {
   const { isLoaded } = useUser();
 
   const {
-    // loading: loadingCompanies,
     data: companies,
     fn: fnCompanies,
   } = useFetch(getCompanies);
