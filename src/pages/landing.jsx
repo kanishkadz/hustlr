@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   return (
-    <main className="flex flex-col gap-10 sm:gap-20 py-10 sm:py-20">
+    <main className="flex flex-col gap-10 sm:gap-20 py-10 sm:py-20 px-4 sm:px-10">
       <section className="text-center ">
         <h1 className="flex flex-col items-center justify-center gradient-title font-extrabold text-4xl sm:text-6xl lg:text-8xl tracking-tighter py-4">
           Find Your Dream Job
@@ -54,7 +54,7 @@ const LandingPage = () => {
         </CarouselContent>
       </Carousel>
 
-      <img src="/banner.jpeg" className="w-full" />
+      <img src="/banner.png" className="w-full" />
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card>
